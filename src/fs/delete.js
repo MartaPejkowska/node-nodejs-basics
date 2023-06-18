@@ -1,5 +1,14 @@
+import fs from 'fs';
+import { getDirname } from '../util/getDirname.js';
+import path from 'path';
+
+const delPath=path.join(getDirname(import.meta.url),'files_copy','fileToRemove.txt')
+
 const remove = async () => {
-    // Write your code here 
+fs.unlink(delPath, err=>{
+    if(err) throw new Error('FS operation failed')
+    console.log('File removed')
+})
 };
 
 await remove();
